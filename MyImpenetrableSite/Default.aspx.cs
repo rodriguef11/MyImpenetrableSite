@@ -13,5 +13,10 @@ namespace MyImpenetrableSite
         {
 
         }
+
+        protected void btnLogin_Click(object sender, EventArgs e)
+        {
+            lblSigninResult.Text = "You just clicked Sign in.";            
+        }
     }
 }

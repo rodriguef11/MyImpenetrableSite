@@ -15,6 +15,6 @@
             <p>You can detect common web application vulnerabilities, such as Scross-Site Scripting, Information Disclosure, SQL Injection, and more.</p>
             <p>I recommend you to start with the search page <a href="Search.aspx">here</a>.</p>
         </div>        
-    </div>
-
+    </div>    
+    <asp:Button ID="btnLogin" runat="server" CssClass="btn btn-primary" Text="Sign in" OnClick="btnLogin_Click" />    
 </asp:Content>
