@@ -9,6 +9,7 @@ body {
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+    margin-top:10px;
 }
 
 /* Set widths on the form inputs since otherwise they're 100% wide */
@@ -26,6 +27,7 @@ textarea {
     }
 
     .body-content {
-        padding: 0;
+        padding: 15px;
+        margin-top: 10px;
     }
 }

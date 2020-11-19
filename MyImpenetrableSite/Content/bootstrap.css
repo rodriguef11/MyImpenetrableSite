@@ -1088,13 +1088,14 @@ body {
   color: #333333;
   background-color: #fff;
 }
+
 input,
 button,
 select,
 textarea {
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
 }
 a {
   color: #337ab7;
