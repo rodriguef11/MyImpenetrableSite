@@ -29,10 +29,17 @@ namespace MyImpenetrableSite
             StringBuilder sb = new StringBuilder();
             sb.Append("<div class='row'>");
             sb.Append("<div class='col-md-12'>");
+            sb.Append("<a href='AddUser.aspx'>Add User</a>");
+            sb.Append("</div>");
+            sb.Append("<div class='col-md-12'>&nbsp;</div>");
+            sb.Append("</div>");
+            sb.Append("<div class='row'>");
+            sb.Append("<div class='col-md-12'>");
             sb.Append("<table id='tblUsers' class='table table-striped'>");
-            sb.Append("<th>FirstName</th>");
-            sb.Append("<th>LastName</th>");
+            sb.Append("<th>First Name</th>");
+            sb.Append("<th>Last Name</th>");
             sb.Append("<th>Username</th>");
+            sb.Append("<th>Email</th>");
             sb.Append("<th>Action</th>");
             sb.Append("<tbody>");
 
@@ -48,6 +55,9 @@ namespace MyImpenetrableSite
                 sb.Append("</td>");
                 sb.Append("<td>");
                 sb.Append(reader["Username"].ToString());
+                sb.Append("</td>");
+                sb.Append("<td>");
+                sb.Append(reader["Email"].ToString());
                 sb.Append("</td>");
                 sb.Append("<td>");
                 sb.Append("<a href='DeleteUser.aspx?Id=");

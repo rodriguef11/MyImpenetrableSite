@@ -35,7 +35,7 @@ namespace MyImpenetrableSite
             else
             {
                 conn.Close();
-                string strQuery = "SELECT * FROM Users WHERE Username = '" + txtUsername.Text.Trim() 
+                string strQuery = "SELECT * FROM Users WHERE Username = '" + txtUsername.Text.Trim()
                     + "' AND Password = '" + txtPassword.Text.Trim() + "'";
                 cmd = new SqlCommand(strQuery, conn);
                 conn.Open();
@@ -56,9 +56,19 @@ namespace MyImpenetrableSite
                     }
                     else
                     {
+                        int statusId = int.Parse(reader["StatusId"].ToString());
                         reader.Close();
                         conn.Close();
-                        Response.Redirect("Members.aspx");
+
+                        if (statusId == 2)
+                        {
+                            lblLoginError.Text = "Your account is inactive. Please contact the administrator to deactivate your account first.";
+                        }
+                        else
+                        {
+                            Response.Redirect("Members.aspx");
+                        }
+
                     }
                 }
             }
