@@ -57,6 +57,7 @@ namespace MyImpenetrableSite
                     else
                     {
                         int statusId = int.Parse(reader["StatusId"].ToString());
+                        string userId = reader["ID"].ToString();
                         reader.Close();
                         conn.Close();
 
@@ -66,7 +67,7 @@ namespace MyImpenetrableSite
                         }
                         else
                         {
-                            Response.Redirect("Members.aspx");
+                            Response.Redirect("Members.aspx?Id=" + userId);
                         }
 
                     }
