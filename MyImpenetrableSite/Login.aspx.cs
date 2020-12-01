@@ -22,27 +22,30 @@ namespace MyImpenetrableSite
             SqlConnection conn = new SqlConnection(WebConfigurationManager.ConnectionStrings["MISConnectionString"].ToString());
 
             // Create a SQL command object to query username
-            string usernameQuery = "SELECT * FROM Users WHERE Username = '" + txtUsername.Text.Trim() + "'";
+            string username = txtUsername.Text.Trim();
+            string usernameQuery = "SELECT * FROM Users WHERE Username = @username";
             SqlCommand cmd = new SqlCommand(usernameQuery, conn);
-
+            cmd.Parameters.Add(new SqlParameter("@username", username));
             conn.Open();
             SqlDataReader sqlDataReader = cmd.ExecuteReader();
             if (!sqlDataReader.HasRows)
             {
-                lblLoginError.Text = "The username you entered does not exist. Please try again.";
+                lblLoginError.Text = "Incorrect username and/or password. Please try again.";
                 conn.Close();
             }
             else
             {
                 conn.Close();
-                string strQuery = "SELECT * FROM Users WHERE Username = '" + txtUsername.Text.Trim()
-                    + "' AND Password = '" + txtPassword.Text.Trim() + "'";
+                string password = txtPassword.Text.Trim();
+                string strQuery = "SELECT * FROM Users WHERE Username = @username AND Password = @password";
                 cmd = new SqlCommand(strQuery, conn);
+                cmd.Parameters.Add(new SqlParameter("@username", username));
+                cmd.Parameters.Add(new SqlParameter("@password", password));
                 conn.Open();
                 SqlDataReader reader = cmd.ExecuteReader();
                 if (!reader.HasRows)
                 {
-                    lblLoginError.Text = "The password you entered is not correct. Please try again.";
+                    lblLoginError.Text = "Incorrect username and/or password. Please try again.";
                 }
                 else
                 {
