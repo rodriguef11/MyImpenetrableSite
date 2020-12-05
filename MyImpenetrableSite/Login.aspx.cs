@@ -55,7 +55,8 @@ namespace MyImpenetrableSite
                     {
                         reader.Close();
                         conn.Close();
-                        Response.Redirect("Admin.aspx");
+                        Context.Items.Add("roleId", "1");
+                        Server.Transfer("Admin.aspx");
                     }
                     else
                     {
