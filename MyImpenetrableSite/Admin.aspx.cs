@@ -16,7 +16,8 @@ namespace MyImpenetrableSite
         {
             try
             {
-                if(Context.Items["roleId"].ToString() == "1")
+                // Validate Admin role id
+                if (Session["roleId"].ToString().Equals("1"))
                 {
                     // Create a SqlConnection object
                     SqlConnection conn = new SqlConnection(WebConfigurationManager.ConnectionStrings["MISConnectionString"].ToString());
@@ -79,12 +80,16 @@ namespace MyImpenetrableSite
                     conn.Close();
                     lblUsersList.Text = sb.ToString();
                 }
+                else
+                    // Redirect if role id does not equal 1
+                    Response.Redirect("Login.aspx");
             }
             catch(System.NullReferenceException)
             {
-                Response.Redirect("Default.aspx");
+                // Redirect if there is no role id
+                Response.Redirect("Login.aspx");
             }
             
-        }
+        }        
     }
 }

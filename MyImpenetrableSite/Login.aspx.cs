@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Web.Configuration;
+using System.Web.Security;
 
 namespace MyImpenetrableSite
 {
@@ -55,8 +56,9 @@ namespace MyImpenetrableSite
                     {
                         reader.Close();
                         conn.Close();
-                        Context.Items.Add("roleId", "1");
-                        Server.Transfer("Admin.aspx");
+                        Session.Clear();
+                        Session["roleId"] = roleId; // Set admin role id to session
+                        Response.Redirect("Admin.aspx");
                     }
                     else
                     {
@@ -71,6 +73,8 @@ namespace MyImpenetrableSite
                         }
                         else
                         {
+                            Session.Clear();
+                            Session["userId"] = userId; // Set user id to session
                             Response.Redirect("Members.aspx?Id=" + userId);
                         }
 
