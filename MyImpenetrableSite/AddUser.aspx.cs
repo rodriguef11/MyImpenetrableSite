@@ -13,7 +13,15 @@ namespace MyImpenetrableSite
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            try
+            {
+                if (!Session["roleId"].ToString().Equals("1"))
+                    Response.Redirect("Login.aspx");
+            }
+            catch (System.NullReferenceException)
+            {
+                Response.Redirect("Login.aspx");
+            }
         }
 
         protected void btnAddUser_Click(object sender, EventArgs e)
