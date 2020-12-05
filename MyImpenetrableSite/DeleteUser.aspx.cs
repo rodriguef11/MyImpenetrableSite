@@ -24,8 +24,9 @@ namespace MyImpenetrableSite
 
                     // DELETE statement and SqlCommand object
                     // Actually, we don't delete the user. We just deactivate the user.
-                    string strDelete = "UPDATE Users SET StatusId = 2 WHERE ID=" + userId;
+                    string strDelete = "UPDATE Users SET StatusId = 2 WHERE ID = @userid";
                     SqlCommand cmdDelete = new SqlCommand(strDelete, conn);
+                    cmdDelete.Parameters.Add(new SqlParameter("@userid", userId));
                     conn.Open();
                     cmdDelete.ExecuteNonQuery();
                     conn.Close();

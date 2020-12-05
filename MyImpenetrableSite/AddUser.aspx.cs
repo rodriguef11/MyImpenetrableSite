@@ -36,12 +36,19 @@ namespace MyImpenetrableSite
             string password = firstName + "." + lastName;
             string email = txtEmail.Text.Trim();
             string telephone = txtPhone.Text.Trim();
+            string lastLoginTime = DateTime.Now.ToString();
             // INSERT statements and SqlCommand
             string strInsert = "INSERT INTO Users (FirstName, LastName, Email, Phone, Username, Password, RoleId, StatusId, LastLoginTime) " +
-                "VALUES ('" + firstName + "', '" + lastName + "', '" + email + "', '" + telephone + "', '" + username + "', '" + password +
-                "', 2, 1, '" + DateTime.Now.ToString() + "')";
+                "VALUES (@firstname, @lastname, @email, @telephone, @username, @password, 2, 1, @lastlogintime";
 
             SqlCommand cmdInsert = new SqlCommand(strInsert, conn);
+            cmdInsert.Parameters.Add(new SqlParameter("@firstname", firstName));
+            cmdInsert.Parameters.Add(new SqlParameter("@lastname", lastName));
+            cmdInsert.Parameters.Add(new SqlParameter("@email", email));
+            cmdInsert.Parameters.Add(new SqlParameter("@telephone", telephone));
+            cmdInsert.Parameters.Add(new SqlParameter("@username", username));
+            cmdInsert.Parameters.Add(new SqlParameter("@password", password));
+            cmdInsert.Parameters.Add(new SqlParameter("@lastlogintime", lastLoginTime));
             conn.Open();
             cmdInsert.ExecuteNonQuery();
             conn.Close();
