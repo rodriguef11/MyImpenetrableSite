@@ -39,7 +39,7 @@ namespace MyImpenetrableSite
             string lastLoginTime = DateTime.Now.ToString();
             // INSERT statements and SqlCommand
             string strInsert = "INSERT INTO Users (FirstName, LastName, Email, Phone, Username, Password, RoleId, StatusId, LastLoginTime) " +
-                "VALUES (@firstname, @lastname, @email, @telephone, @username, @password, 2, 1, @lastlogintime";
+                "VALUES (@firstname, @lastname, @email, @telephone, @username, @password, 2, 1, @lastlogintime)";
 
             SqlCommand cmdInsert = new SqlCommand(strInsert, conn);
             cmdInsert.Parameters.Add(new SqlParameter("@firstname", firstName));
