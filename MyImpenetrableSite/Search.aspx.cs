@@ -16,9 +16,10 @@ namespace MyImpenetrableSite
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-
-        lblSearchTerms.Text = HttpUtility.HtmlEncode("You searched for: " + txtSearchTerms.Text);  
-            
+            // Encode user input
+            string rawInput = txtSearchTerms.Text;
+            string encodedInput = Server.HtmlEncode(rawInput);
+            lblSearchTerms.Text = "You searched for: " + encodedInput;  
         }
     }
 }

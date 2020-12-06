@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-lg-12">Search for</div>
         <div class="col-lg-12">
-            <asp:TextBox ID ="txtSearchTerms" runat="server" CssClass="form-control" required></asp:TextBox>
+            <asp:TextBox ID ="txtSearchTerms" runat="server" CssClass="form-control" required="true"></asp:TextBox>
         </div>
         </div>
     <div class="row">
@@ -13,7 +13,7 @@
         </div>
         <div class="col-lg-12">&nbsp;</div>
         <div class="col-lg-12">
-            <asp:Label ID="lblSearchTerms" runat="server" CssClass=""></asp:Label>
+            <asp:Label ID="lblSearchTerms" runat="server" CssClass="" ></asp:Label>
         </div>
     </div>
 </asp:Content>
